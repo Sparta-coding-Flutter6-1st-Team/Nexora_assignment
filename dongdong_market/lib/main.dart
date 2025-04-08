@@ -52,7 +52,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: '쇼핑앱',
+      title: '동동시장',
       theme: ThemeData(primarySwatch: Colors.blue),
       initialRoute: isLoggedIn ? '/category' : '/',
       routes: {

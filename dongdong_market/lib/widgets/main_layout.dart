@@ -23,21 +23,26 @@ class MainLayout extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Row(
-              children: const [
-                Icon(Icons.shopping_cart, color: Colors.white),
-                SizedBox(width: 8),
-                Text(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset('assets/basket_icon.png', width: 40, height: 40),
+                const SizedBox(width: 10),
+                const Text(
                   '동동시장',
                   style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
+                    fontSize: 28,
                     fontWeight: FontWeight.bold,
+                    color: Color(0xFF4B2E0F),
                   ),
                 ),
               ],
             ),
             PopupMenuButton<String>(
-              icon: const Icon(Icons.menu, color: Colors.white),
+              icon: const Icon(
+                Icons.menu,
+                color: Color(0xFFDDB072),
+                size: 40, // 원하는 크기로 조절 (기본은 24)
+              ),
               onSelected: (value) async {
                 if (value == 'logout') {
                   final prefs = await SharedPreferences.getInstance();
@@ -65,12 +70,13 @@ class MainLayout extends StatelessWidget {
       ),
       body: child, // ✅ 페이지 내용
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Color(0xFFDDB072), // 👈 여기서 배경색 지정
         currentIndex: currentIndex,
         onTap: (index) {
           final routes = ['/author_list_page', '/cart', '/payment'];
           Navigator.pushNamed(context, routes[index]);
         },
-        selectedItemColor: AppColors.accent,
+        selectedItemColor: Color.fromARGB(255, 0, 0, 0),
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.list), label: '상품'),
           BottomNavigationBarItem(

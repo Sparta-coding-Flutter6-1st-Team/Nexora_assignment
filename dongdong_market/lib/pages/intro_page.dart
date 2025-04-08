@@ -18,7 +18,7 @@ class DongdongIntroPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset('assets/basket_icon.png', width: 32, height: 32),
+                Image.asset('assets/basket_icon.png', width: 60, height: 60),
                 const SizedBox(width: 10),
                 const Text(
                   '동동시장',
@@ -66,9 +66,6 @@ class DongdongIntroPage extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
             ),
-
-            const SizedBox(height: 24),
-
             Expanded(
               child: Column(
                 children: [
@@ -78,8 +75,6 @@ class DongdongIntroPage extends StatelessWidget {
                       child: Image.asset('assets/main_images.jpg'),
                     ),
                   ),
-                  const SizedBox(height: 16),
-
                   // 카카오 로그인 버튼
                   TextButton.icon(
                     onPressed: () async {
