@@ -1,3 +1,4 @@
+import 'package:dongdong_market/models/product.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../widgets/category_tag.dart';
@@ -16,9 +17,9 @@ class _CategoryScreenState extends State<CategoryScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF7E4D0),
+      backgroundColor: AppColors.CategoryBackground,
       appBar: AppBar(
-        backgroundColor: const Color(0xFFF5DFC4),
+        backgroundColor: AppColors.CategoryAppBarBackground,
         elevation: 0,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.end,
@@ -44,7 +45,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                   style: GoogleFonts.notoSansKr(
                     fontSize: 32,
                     fontWeight: FontWeight.bold,
-                    color: const Color(0xFF3E2723),
+                    color: AppColors.selectedTagText,
                   ),
                 ),
               ),
@@ -57,7 +58,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                     textAlign: TextAlign.center,
                     style: GoogleFonts.notoSansKr(
                       fontSize: 16,
-                      color: const Color(0xFF5D4037),
+                      color: AppColors.unselectedTagText,
                     ),
                   ),
                 ),
@@ -96,7 +97,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                     print('선택된 카테고리: $_selectedCategories');
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFFD6B69E),
+                    backgroundColor: AppColors.Button,
                     foregroundColor: Colors.white,
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     shape: RoundedRectangleBorder(
