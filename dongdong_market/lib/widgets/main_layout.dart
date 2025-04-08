@@ -41,7 +41,7 @@ class MainLayout extends StatelessWidget {
               onSelected: (value) async {
                 if (value == 'logout') {
                   final prefs = await SharedPreferences.getInstance();
-                  print('🔑 저장된 토큰: $prefs');
+                  print('🔑토큰삭제');
                   await prefs.remove('accessToken');
                   await prefs.remove('jwt'); // ✅ JWT도 제거
                   Navigator.pushNamedAndRemoveUntil(
