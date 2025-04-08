@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/creator.dart';
+import '../services/product_service.dart';
 
 class CreatorBanner extends StatelessWidget {
   final Creator creator;
@@ -14,9 +15,23 @@ class CreatorBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
+      onTap: () async {
         print("📢 클릭한 작가: ${creator.name}, 주소: ${creator.address}");
-        // 필요하면 Navigator.push(...) 로 상세페이지도 연결 가능
+
+        final products = await ProductService.fetchProductsByCreator(
+          creator.id.toString(),
+        );
+
+        if (products != null) {
+          Navigator.pushNamed(
+            context,
+            '/ProductListPage',
+            arguments: {'creator': creator, 'products': products},
+          );
+        } else {
+          print("❌ 상품 목록 불러오기 실패");
+          // 실패 토스트 등도 가능
+        }
       },
       child: Container(
         color: backgroundColor,
