@@ -1,4 +1,4 @@
-import 'package:dongdong_market/models/product.dart';
+import 'package:dongdong_market/models/models.dart';
 import 'package:flutter/material.dart';
 import '../data/dummy_products.dart';
 import '../widgets/main_layout.dart';
@@ -76,43 +76,37 @@ class ProductListPage extends StatelessWidget {
   }
 }
 
-class SearchBar extends StatelessWidget{
+class SearchBar extends StatelessWidget {
   const SearchBar({super.key});
-  
+
   @override
   Widget build(BuildContext context) {
-   return Center(
-    child: Container(
-      width: 902,
-      height: 82,
-      color: AppColors.SearchBar,
-      padding: const EdgeInsets.all(10),
-      child: TextField(
-        textAlign: TextAlign.center,
-        decoration: InputDecoration(
-          hintText: '찾고자 하는 이를 써보시오',
-          suffixIcon: const Icon(Icons.search),
-          filled: true,
-          fillColor: AppColors.SearchBarfill,
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(28),
-            borderSide: const BorderSide(
-              color: Colors.black,
-              width: 1.5,
+    return Center(
+      child: Container(
+        width: 902,
+        height: 82,
+        color: AppColors.SearchBar,
+        padding: const EdgeInsets.all(10),
+        child: TextField(
+          textAlign: TextAlign.center,
+          decoration: InputDecoration(
+            hintText: '찾고자 하는 이를 써보시오',
+            suffixIcon: const Icon(Icons.search),
+            filled: true,
+            fillColor: AppColors.SearchBarfill,
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(28),
+              borderSide: const BorderSide(color: Colors.black, width: 1.5),
             ),
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(28),
-            borderSide: const BorderSide(
-              color: Colors.black,
-              width: 1.5,
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(28),
+              borderSide: const BorderSide(color: Colors.black, width: 1.5),
             ),
+            contentPadding: const EdgeInsets.symmetric(vertical: 22),
           ),
-          contentPadding: const EdgeInsets.symmetric(vertical: 22),
+          style: const TextStyle(fontSize: 18),
         ),
-        style: const TextStyle(fontSize: 18),
       ),
-     ),
     );
   }
 }

@@ -1,4 +1,4 @@
-import 'package:dongdong_market/models/product.dart';
+import 'package:dongdong_market/models/models.dart';
 import 'package:flutter/material.dart';
 
 class CategoryTag extends StatelessWidget {
@@ -32,7 +32,9 @@ class CategoryTag extends StatelessWidget {
           label,
           style: TextStyle(
             color:
-                isSelected ? AppColors.selectedTagText : AppColors.unselectedTagText,
+                isSelected
+                    ? AppColors.selectedTagText
+                    : AppColors.unselectedTagText,
             fontSize: 14,
             fontWeight: isSelected ? FontWeight.w500 : FontWeight.normal,
           ),

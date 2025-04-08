@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:dongdong_market/models/product.dart';
+import 'package:dongdong_market/models/models.dart';
 
 class MainLayout extends StatelessWidget {
   final Widget child;
@@ -11,8 +11,8 @@ class MainLayout extends StatelessWidget {
     required this.child,
     required this.currentIndex,
     required this.onTap,
-  }); 
- 
+  });
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,13 +23,20 @@ class MainLayout extends StatelessWidget {
           children: [
             Row(
               children: const [
-                kAppIcon,
+                Icon(Icons.shopping_cart, color: Colors.white),
                 SizedBox(width: 8),
-                Text(kAppBarTitle, style: kAppBarTitleStyle),
+                Text(
+                  '동동시장',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ],
             ),
             IconButton(
-              icon: kMenuIcon,
+              icon: const Icon(Icons.menu, color: Colors.white),
               onPressed: () {
                 ScaffoldMessenger.of(
                   context,
@@ -40,7 +47,7 @@ class MainLayout extends StatelessWidget {
         ),
         elevation: 4,
       ),
-      body: child,
+      body: child, // ✅ 페이지 내용
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
         onTap: onTap,

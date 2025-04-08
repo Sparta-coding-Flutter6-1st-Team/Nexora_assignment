@@ -1,4 +1,4 @@
-import 'package:dongdong_market/models/product.dart';
+import 'package:dongdong_market/models/models.dart';
 import 'package:flutter/material.dart';
 import '../data/dummy_products.dart';
 import '../widgets/main_layout.dart';
