@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../models/product.dart'; // 추가된 상수 파일 import
 
 class MainLayout extends StatelessWidget {
   final Widget child;
@@ -16,26 +17,19 @@ class MainLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xFFF7DEB1),
+        backgroundColor: kAppBarBackgroundColor,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Row(
               children: const [
-                Icon(Icons.shopping_cart, color: Colors.white),
+                kAppIcon,
                 SizedBox(width: 8),
-                Text(
-                  '동동시장',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+                Text(kAppBarTitle, style: kAppBarTitleStyle),
               ],
             ),
             IconButton(
-              icon: const Icon(Icons.menu, color: Colors.white),
+              icon: kMenuIcon,
               onPressed: () {
                 ScaffoldMessenger.of(
                   context,
@@ -46,11 +40,11 @@ class MainLayout extends StatelessWidget {
         ),
         elevation: 4,
       ),
-      body: child, // ✅ 페이지 내용
+      body: child,
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
         onTap: onTap,
-        selectedItemColor: const Color(0xFFE9BF7E),
+        selectedItemColor: kSelectedNavColor,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.list), label: '상품'),
           BottomNavigationBarItem(
