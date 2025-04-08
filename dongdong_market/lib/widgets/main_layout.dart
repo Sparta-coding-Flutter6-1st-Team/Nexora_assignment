@@ -1,10 +1,18 @@
-import 'package:dongdong_market/models/product.dart';
 import 'package:flutter/material.dart';
 
 class MainLayout extends StatelessWidget {
-  final Layout layout;
+  final Widget child;
+  final int currentIndex;
+  final Function(int) onTap;
 
-  const MainLayout({super.key, required this.layout});
+  const MainLayout({
+    super.key,
+    required this.child,
+    required this.currentIndex,
+    required this.onTap,
+  }); 
+
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -40,10 +48,10 @@ class MainLayout extends StatelessWidget {
         ),
         elevation: 4,
       ),
-      body: layout.child, // ✅ 페이지 내용
+      body: child, // ✅ 페이지 내용
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: layout.currentIndex,
-        onTap: layout.onTap,
+        currentIndex: currentIndex,
+        onTap: onTap,
         selectedItemColor: const Color(0xFFE9BF7E),
         items: const [
           BottomNavigationBarItem(
