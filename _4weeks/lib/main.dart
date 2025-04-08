@@ -4,6 +4,7 @@ import 'pages/cart_list_page.dart';
 import 'pages/payment_info_page.dart';
 import 'pages/product_list_page.dart';
 import 'pages/intro_page.dart';
+import 'pages/category_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
         '/intro': (context) => const DongdongIntroPage(),
         '/cart': (context) => const CartListPage(),
         '/payment': (context) => const PaymentInfoPage(),
+        '/category': (context) => const CategoryScreen(),
       },
     );
   }
