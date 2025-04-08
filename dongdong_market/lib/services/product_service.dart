@@ -1,4 +1,3 @@
-// lib/services/product_service.dart
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
@@ -18,7 +17,9 @@ class ProductService {
 
       if (response.statusCode == 200) {
         final decodedBody = utf8.decode(response.bodyBytes);
-        return json.decode(decodedBody);
+        final productjsonData = json.decode(decodedBody);
+        print('📦 받아온 상품 리스트: $productjsonData'); // ✅ 여기!
+        return productjsonData;
       } else {
         print('❌ 상품 API 실패: ${response.statusCode}');
         return null;
