@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'pages/cart_list_page.dart';
 import 'pages/payment_info_page.dart';
 import 'pages/intro_page.dart';
 import 'pages/category_screen.dart';
-import 'pages/product_list_page.dart';
 import 'services/backend_auth_service.dart';
-import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -58,7 +57,6 @@ class MyApp extends StatelessWidget {
         '/': (context) => const DongdongIntroPage(),
         '/intro': (context) => const DongdongIntroPage(),
         '/cart': (context) => const CartListPage(),
-        '/list': (context) => const ProductListPage(),
         '/payment': (context) => const PaymentInfoPage(),
         '/category': (context) => const CategoryScreen(),
       },
