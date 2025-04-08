@@ -115,8 +115,8 @@ class BannerCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<Color> bgColors = [
-      const Color(0xFFD5A5A2),
-      const Color(0xFF3F575B),
+      AppColors.Banner,
+      AppColors.BannerCardBackground,
     ];
     final Color randomBgColor = bgColors[Random().nextInt(bgColors.length)];
 
