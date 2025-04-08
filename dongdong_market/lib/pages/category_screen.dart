@@ -20,6 +20,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
       backgroundColor: AppColors.CategoryBackground,
       appBar: AppBar(
         backgroundColor: AppColors.CategoryAppBarBackground,
+        elevation: 0,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
