@@ -109,8 +109,20 @@ class DongdongIntroPage extends StatelessWidget {
 
                   // 카카오 로그인 버튼
                   TextButton.icon(
-                    onPressed: () {
-                      KakaoLoginService.login(); // 기능은 따로 분리됨
+                    onPressed: () async {
+                      final result = await KakaoLoginService.login();
+
+                      if (result) {
+                        // 로그인 성공 시: 메인 페이지로 이동
+                        Navigator.pushReplacementNamed(context, '/category');
+                      } else {
+                        // 로그인 실패 시: 에러 메시지 출력
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('로그인에 실패했습니다. 다시 시도해주세요'),
+                          ),
+                        );
+                      }
                     },
                     icon: Image.asset(
                       'assets/kakao_logo.png',
@@ -136,7 +148,6 @@ class DongdongIntroPage extends StatelessWidget {
                       ),
                     ),
                   ),
-
                   const SizedBox(height: 32),
                 ],
               ),
