@@ -80,33 +80,6 @@ class DongdongIntroPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 16),
 
-                  // 바로입장 버튼
-                  ElevatedButton(
-                    onPressed: () {
-                      // 나중에 홈 이동 등 추가
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFFF3B95F),
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 40,
-                        vertical: 16,
-                      ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                    ),
-                    child: const Text(
-                      '바로입장',
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Color(0xFF4B2E0F),
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-
-                  const SizedBox(height: 12),
-
                   // 카카오 로그인 버튼
                   TextButton.icon(
                     onPressed: () async {
@@ -114,6 +87,7 @@ class DongdongIntroPage extends StatelessWidget {
 
                       if (result) {
                         // 로그인 성공 시: 메인 페이지로 이동
+
                         Navigator.pushReplacementNamed(context, '/category');
                       } else {
                         // 로그인 실패 시: 에러 메시지 출력
@@ -124,11 +98,6 @@ class DongdongIntroPage extends StatelessWidget {
                         );
                       }
                     },
-                    icon: Image.asset(
-                      'assets/kakao_logo.png',
-                      width: 24,
-                      height: 24,
-                    ),
                     label: const Text(
                       '카카오로 시작하기',
                       style: TextStyle(

@@ -5,6 +5,7 @@ import 'pages/cart_list_page.dart';
 import 'pages/payment_info_page.dart';
 import 'pages/intro_page.dart';
 import 'pages/category_screen.dart';
+import 'pages/author_list_page.dart';
 import 'services/backend_auth_service.dart';
 
 void main() async {
@@ -59,6 +60,7 @@ class MyApp extends StatelessWidget {
         '/cart': (context) => const CartListPage(),
         '/payment': (context) => const PaymentInfoPage(),
         '/category': (context) => const CategoryScreen(),
+        '/author_list_page': (context) => const AuthorListPage(),
       },
     );
   }

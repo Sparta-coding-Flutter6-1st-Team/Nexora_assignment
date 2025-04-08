@@ -1,11 +1,40 @@
 import 'package:dongdong_market/models/models.dart';
+import 'package:dongdong_market/models/creator.dart';
 import 'package:flutter/material.dart';
-import '../data/dummy_products.dart';
 import '../widgets/main_layout.dart';
-import 'dart:math'; // 랜덤 색상 생성을 위해 필요
+import '../services/creator_service.dart';
+import '../widgets/creator_banner.dart'; // 배너 위젯 추가
 
-class ProductListPage extends StatelessWidget {
-  const ProductListPage({super.key});
+class AuthorListPage extends StatefulWidget {
+  const AuthorListPage({super.key});
+
+  @override
+  State<AuthorListPage> createState() => _AuthorListPageState();
+}
+
+class _AuthorListPageState extends State<AuthorListPage> {
+  List<Creator> _creators = [];
+
+  @override
+  void initState() {
+    super.initState();
+    fetchCreatorList();
+  }
+
+  Future<void> fetchCreatorList() async {
+    final creatorsJson = await ApiService.fetchCreators();
+    if (creatorsJson != null) {
+      print("✅ 작가 리스트 받아옴: $creatorsJson");
+      setState(() {
+        _creators =
+            creatorsJson
+                .map<Creator>((json) => Creator.fromJson(json))
+                .toList();
+      });
+    } else {
+      print("❌ 작가 리스트 요청 실패");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,13 +53,11 @@ class ProductListPage extends StatelessWidget {
             break;
         }
       },
-
-      // 🔽 여기 Container로 감싸서 전체 배경색 적용
       child: Container(
-        color: AppColors.Page, // ✅ 페이지 배경색
+        color: AppColors.Page,
         child: Column(
           children: [
-            // 🔍 검색바
+            // 검색바
             Center(
               child: Container(
                 width: 902,
@@ -65,96 +92,35 @@ class ProductListPage extends StatelessWidget {
               ),
             ),
 
-            // 🎉 커스텀 배너
-            const BannerCard(),
+            // 배너 이미지
+            Image.asset(
+              'assets/benner.png',
+              width: double.infinity,
+              fit: BoxFit.cover,
+            ),
 
-            // 📦 상품 리스트
+            // 작가 리스트
             Expanded(
-              child: ListView.builder(
-                itemCount: dummyProducts.length,
-                itemBuilder: (context, index) {
-                  final product = dummyProducts[index];
-                  return ListTile(
-                    leading: Image.network(
-                      product.imageUrl,
-                      width: 60,
-                      height: 60,
-                      fit: BoxFit.cover,
-                      errorBuilder: (context, error, stackTrace) {
-                        return const Icon(
-                          Icons.broken_image,
-                          size: 60,
-                          color: Colors.grey,
-                        );
-                      },
-                    ),
-                    title: Text(product.name),
-                    subtitle: Text('${product.price}원'),
-                    trailing: IconButton(
-                      icon: const Icon(Icons.favorite_border), // 빈 하트 아이콘
-                      color: Colors.red,
-                      onPressed: () {
-                        // TODO: 즐겨찾기 상태 저장 로직 추가 예정
-                        print('${product.name} 즐겨찾기!');
-                      },
-                    ),
-                  );
-                },
-              ),
+              child:
+                  _creators.isEmpty
+                      ? const Center(child: CircularProgressIndicator())
+                      : ListView.builder(
+                        itemCount: _creators.length,
+                        itemBuilder: (context, index) {
+                          final creator = _creators[index];
+                          final isEven = index % 2 == 0;
+
+                          return CreatorBanner(
+                            creator: creator,
+                            backgroundColor: Color(
+                              isEven ? 0xFF4A6B6F : 0xFFD9A5A3,
+                            ),
+                          );
+                        },
+                      ),
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class BannerCard extends StatelessWidget {
-  const BannerCard({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final List<Color> bgColors = [
-      AppColors.Banner,
-      AppColors.BannerCardBackground,
-    ];
-    final Color randomBgColor = bgColors[Random().nextInt(bgColors.length)];
-
-    return Container(
-      height: 100,
-      color: randomBgColor,
-      child: Row(
-        children: [
-          const Padding(
-            padding: EdgeInsets.only(left: 10),
-            child: Icon(Icons.storefront, size: 40, color: Colors.white),
-          ),
-          const SizedBox(width: 10),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.only(right: 10),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  Text(
-                    '동동상회',
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  SizedBox(height: 4),
-                  Text(
-                    '서울특별시 동작구 어딘가 123',
-                    style: TextStyle(fontSize: 14, color: Colors.white70),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
       ),
     );
   }

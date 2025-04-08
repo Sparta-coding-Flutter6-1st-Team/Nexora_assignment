@@ -37,7 +37,10 @@ class _CategoryScreenState extends State<CategoryScreen> {
     });
 
     if (success) {
-      Navigator.pushNamed(context, '/list'); // 홈 화면 또는 다음 페이지 라우트로 이동
+      Navigator.pushNamed(
+        context,
+        '/author_list_page',
+      ); // 홈 화면 또는 다음 페이지 라우트로 이동
     } else {
       ScaffoldMessenger.of(
         context,
