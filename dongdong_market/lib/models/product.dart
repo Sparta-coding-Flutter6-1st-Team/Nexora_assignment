@@ -7,7 +7,6 @@ class Product {
 
   Product({required this.name, required this.imageUrl, required this.price});
 }
-
 class AppColors {
   static const Color AppBarBackground = Color(0xFFF7DEB1); //AppBar 배경 색상
   static const Color accent = Color(0xFFF9BF7E); // BottomNavigationBar 선택된 아이템 컬러

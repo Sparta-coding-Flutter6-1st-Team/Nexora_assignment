@@ -23,20 +23,13 @@ class MainLayout extends StatelessWidget {
           children: [
             Row(
               children: const [
-                Icon(Icons.shopping_cart, color: Colors.white),
+                kAppIcon,
                 SizedBox(width: 8),
-                Text(
-                  '동동시장',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+                Text(kAppBarTitle, style: kAppBarTitleStyle),
               ],
             ),
             IconButton(
-              icon: const Icon(Icons.menu, color: Colors.white),
+              icon: kMenuIcon,
               onPressed: () {
                 ScaffoldMessenger.of(
                   context,
@@ -47,7 +40,7 @@ class MainLayout extends StatelessWidget {
         ),
         elevation: 4,
       ),
-      body: child, // ✅ 페이지 내용
+      body: child,
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
         onTap: onTap,
