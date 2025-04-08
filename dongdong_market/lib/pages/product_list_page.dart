@@ -30,40 +30,7 @@ class ProductListPage extends StatelessWidget {
         child: Column(
           children: [
             // 🔍 검색바
-            Center(
-              child: Container(
-                width: 902,
-                height: 82,
-                color: const Color(0xFFEDC180),
-                padding: const EdgeInsets.all(10),
-                child: TextField(
-                  textAlign: TextAlign.center,
-                  decoration: InputDecoration(
-                    hintText: '찾고자 하는 이를 써보시오',
-                    suffixIcon: const Icon(Icons.search),
-                    filled: true,
-                    fillColor: const Color(0xFFF4ECDB),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(28),
-                      borderSide: const BorderSide(
-                        color: Colors.black,
-                        width: 1.5,
-                      ),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(28),
-                      borderSide: const BorderSide(
-                        color: Colors.black,
-                        width: 1.5,
-                      ),
-                    ),
-                    contentPadding: const EdgeInsets.symmetric(vertical: 22),
-                  ),
-                  style: const TextStyle(fontSize: 18),
-                ),
-              ),
-            ),
-
+            const SearchBar(),
             // 🎉 커스텀 배너
             const BannerCard(),
 
@@ -104,6 +71,47 @@ class ProductListPage extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class SearchBar extends StatelessWidget{
+  const SearchBar({super.key});
+  
+  @override
+  Widget build(BuildContext context) {
+   return Center(
+    child: Container(
+      width: 902,
+      height: 82,
+      color: const Color(0xFFEDC180),
+      padding: const EdgeInsets.all(10),
+      child: TextField(
+        textAlign: TextAlign.center,
+        decoration: InputDecoration(
+          hintText: '찾고자 하는 이를 써보시오',
+          suffixIcon: const Icon(Icons.search),
+          filled: true,
+          fillColor: const Color(0xFFF4ECDB),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(28),
+            borderSide: const BorderSide(
+              color: Colors.black,
+              width: 1.5,
+            ),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(28),
+            borderSide: const BorderSide(
+              color: Colors.black,
+              width: 1.5,
+            ),
+          ),
+          contentPadding: const EdgeInsets.symmetric(vertical: 22),
+        ),
+        style: const TextStyle(fontSize: 18),
+      ),
+     ),
     );
   }
 }

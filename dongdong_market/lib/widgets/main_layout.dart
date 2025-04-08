@@ -11,9 +11,7 @@ class MainLayout extends StatelessWidget {
     required this.currentIndex,
     required this.onTap,
   }); 
-
  
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,16 +52,12 @@ class MainLayout extends StatelessWidget {
         onTap: onTap,
         selectedItemColor: const Color(0xFFE9BF7E),
         items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.list), 
-            label: '상품'),
+          BottomNavigationBarItem(icon: Icon(Icons.list), label: '상품'),
           BottomNavigationBarItem(
             icon: Icon(Icons.shopping_cart),
             label: '장바구니',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.payment), 
-            label: '결제'),
+          BottomNavigationBarItem(icon: Icon(Icons.payment), label: '결제'),
         ],
       ),
     );
