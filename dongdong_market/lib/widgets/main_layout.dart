@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:dongdong_market/models/product.dart';
 
 class MainLayout extends StatelessWidget {
   final Widget child;
@@ -10,32 +11,25 @@ class MainLayout extends StatelessWidget {
     required this.child,
     required this.currentIndex,
     required this.onTap,
-  });
-
+  }); 
+ 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xFFF7DEB1),
+        backgroundColor: AppColors.AppBarBackground,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Row(
               children: const [
-                Icon(Icons.shopping_cart, color: Colors.white),
+                kAppIcon,
                 SizedBox(width: 8),
-                Text(
-                  '동동시장',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+                Text(kAppBarTitle, style: kAppBarTitleStyle),
               ],
             ),
             IconButton(
-              icon: const Icon(Icons.menu, color: Colors.white),
+              icon: kMenuIcon,
               onPressed: () {
                 ScaffoldMessenger.of(
                   context,
@@ -46,11 +40,11 @@ class MainLayout extends StatelessWidget {
         ),
         elevation: 4,
       ),
-      body: child, // ✅ 페이지 내용
+      body: child,
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
         onTap: onTap,
-        selectedItemColor: const Color(0xFFE9BF7E),
+        selectedItemColor: AppColors.accent,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.list), label: '상품'),
           BottomNavigationBarItem(
