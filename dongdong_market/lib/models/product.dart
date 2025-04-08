@@ -8,7 +8,7 @@ class Product {
   Product({required this.name, required this.imageUrl, required this.price});
 }
 
-class Colors {
+class AppColors {
   static const Color AppBarBackground = Color(0xFFF7DEB1); //AppBar 배경 색상
   static const Color accent = Color(0xFFF9BF7E); // BottomNavigationBar 선택된 아이템 컬러
   static const Color border = Color(0xFF8D6E63); // 선택된 태그 테두리 색상
@@ -22,4 +22,5 @@ class Colors {
   static const Color BannerCardBackground = Color(0xFF3F575B); // 배너 배경색
   static const Color CategoryBackground = Color(0xFFF7E4D0); // 카테고리 배경색
   static const Color CategoryAppBarBackground = Color(0xFFF5DFC4); // 카테고리 AppBar 배경색
+  static const Color Button = Color(0xFFD6B69E); // 버튼 배경색
 }

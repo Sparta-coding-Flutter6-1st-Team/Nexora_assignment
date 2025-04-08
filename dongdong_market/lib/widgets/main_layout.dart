@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:dongdong_market/models/product.dart';
 
 class MainLayout extends StatelessWidget {
   final Widget child;
@@ -16,7 +17,7 @@ class MainLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xFFF7DEB1),
+        backgroundColor: AppColors.AppBarBackground,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -50,7 +51,7 @@ class MainLayout extends StatelessWidget {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
         onTap: onTap,
-        selectedItemColor: const Color(0xFFE9BF7E),
+        selectedItemColor: AppColors.accent,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.list), label: '상품'),
           BottomNavigationBarItem(
