@@ -27,6 +27,7 @@ class ProductListPage extends StatelessWidget {
         bannerColors[Random().nextInt(bannerColors.length)];
 
     return MainLayout(
+      backgroundColor: const Color(0xFFF9DEB4),
       currentIndex: 0,
       onTap: (index) {
         if (index == 0) {
@@ -75,7 +76,6 @@ class ProductListPage extends StatelessWidget {
             creator: creator,
             backgroundColor: selectedColor, // 🎯 랜덤 색상 적용!
           ),
-          const SizedBox(height: 10),
           Expanded(
             child: ListView.builder(
               itemCount: products.length,

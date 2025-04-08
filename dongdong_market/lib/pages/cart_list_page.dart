@@ -11,6 +11,7 @@ class CartPage extends StatelessWidget {
     final List<CartItem> items = CartService.cartItems;
 
     return MainLayout(
+      backgroundColor: const Color(0xFFF9DEB4),
       currentIndex: 1,
       onTap: (index) {
         if (index == 0) {

@@ -39,6 +39,7 @@ class _AuthorListPageState extends State<AuthorListPage> {
   @override
   Widget build(BuildContext context) {
     return MainLayout(
+      backgroundColor: const Color(0xFFF9DEB4),
       currentIndex: 0,
       onTap: (index) {
         if (index == 0) {

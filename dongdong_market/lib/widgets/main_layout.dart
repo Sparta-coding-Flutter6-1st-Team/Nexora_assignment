@@ -6,12 +6,14 @@ class MainLayout extends StatelessWidget {
   final Widget child;
   final int currentIndex;
   final Function(int) onTap;
+  final Color? backgroundColor;
 
   const MainLayout({
     super.key,
     required this.child,
     required this.currentIndex,
     required this.onTap,
+    this.backgroundColor,
   });
 
   @override
