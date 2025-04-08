@@ -1,16 +1,10 @@
+import 'package:dongdong_market/models/product.dart';
 import 'package:flutter/material.dart';
 
 class MainLayout extends StatelessWidget {
-  final Widget child;
-  final int currentIndex;
-  final Function(int) onTap;
+  final Layout layout;
 
-  const MainLayout({
-    super.key,
-    required this.child,
-    required this.currentIndex,
-    required this.onTap,
-  });
+  const MainLayout({super.key, required this.layout});
 
   @override
   Widget build(BuildContext context) {
@@ -46,18 +40,22 @@ class MainLayout extends StatelessWidget {
         ),
         elevation: 4,
       ),
-      body: child, // ✅ 페이지 내용
+      body: layout.child, // ✅ 페이지 내용
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: currentIndex,
-        onTap: onTap,
+        currentIndex: layout.currentIndex,
+        onTap: layout.onTap,
         selectedItemColor: const Color(0xFFE9BF7E),
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.list), label: '상품'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.list), 
+            label: '상품'),
           BottomNavigationBarItem(
             icon: Icon(Icons.shopping_cart),
             label: '장바구니',
           ),
-          BottomNavigationBarItem(icon: Icon(Icons.payment), label: '결제'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.payment), 
+            label: '결제'),
         ],
       ),
     );
