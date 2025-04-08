@@ -58,7 +58,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const DongdongIntroPage(),
         '/intro': (context) => const DongdongIntroPage(),
-        '/cart': (context) => const CartListPage(),
+        '/cart': (context) => const CartPage(),
         '/payment': (context) => const PaymentInfoPage(),
         '/category': (context) => const CategoryScreen(),
         '/author_list_page': (context) => const AuthorListPage(),

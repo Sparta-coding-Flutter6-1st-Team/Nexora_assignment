@@ -4,6 +4,8 @@ import '../models/creator.dart';
 import '../widgets/creator_banner.dart';
 import '../widgets/main_layout.dart';
 import 'package:dongdong_market/models/models.dart';
+import '../models/cart_item.dart';
+import '../services/cart_service.dart';
 
 class ProductListPage extends StatelessWidget {
   const ProductListPage({super.key});
@@ -27,7 +29,9 @@ class ProductListPage extends StatelessWidget {
     return MainLayout(
       currentIndex: 0,
       onTap: (index) {
-        if (index == 1) {
+        if (index == 0) {
+          Navigator.pushNamed(context, '/author_list_page');
+        } else if (index == 1) {
           Navigator.pushNamed(context, '/cart');
         } else if (index == 2) {
           Navigator.pushNamed(context, '/payment');
@@ -144,8 +148,17 @@ class ProductListPage extends StatelessWidget {
                                     const Spacer(),
                                     TextButton.icon(
                                       onPressed: () {
+                                        CartService.addToCart(
+                                          CartItem(
+                                            id: product['id'].toString(),
+                                            name: product['name'],
+                                            price: product['price'],
+                                            quantity: quantity, // 사용자가 설정한 수량
+                                            imageUrl: product['image_url'],
+                                          ),
+                                        );
                                         print(
-                                          '🛒 장바구니 담기: ${product['name']} (수량: $quantity)',
+                                          "🛒 장바구니에 추가됨: ID${product['id']}, 상품명${product['name']}, 수량: $quantity",
                                         );
                                       },
                                       icon: const Icon(

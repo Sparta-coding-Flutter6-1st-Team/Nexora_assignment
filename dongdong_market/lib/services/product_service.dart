@@ -17,9 +17,10 @@ class ProductService {
 
       if (response.statusCode == 200) {
         final decodedBody = utf8.decode(response.bodyBytes);
-        final productjsonData = json.decode(decodedBody);
-        print('📦 받아온 상품 리스트: $productjsonData'); // ✅ 여기!
-        return productjsonData;
+        final List<dynamic> productList = json.decode(decodedBody); // ✅ 여기 고침!
+
+        print('📦 받아온 상품 리스트: $productList');
+        return productList;
       } else {
         print('❌ 상품 API 실패: ${response.statusCode}');
         return null;

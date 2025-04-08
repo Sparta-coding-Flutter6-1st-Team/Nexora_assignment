@@ -9,7 +9,9 @@ class ProductDetailPage extends StatelessWidget {
     return MainLayout(
       currentIndex: 0,
       onTap: (index) {
-        if (index == 1) {
+        if (index == 0) {
+          Navigator.pushNamed(context, '/author_list_page');
+        } else if (index == 1) {
           Navigator.pushNamed(context, '/cart');
         } else if (index == 2) {
           Navigator.pushNamed(context, '/payment');

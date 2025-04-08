@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:dongdong_market/models/models.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MainLayout extends StatelessWidget {
   final Widget child;
@@ -35,13 +36,28 @@ class MainLayout extends StatelessWidget {
                 ),
               ],
             ),
-            IconButton(
+            PopupMenuButton<String>(
               icon: const Icon(Icons.menu, color: Colors.white),
-              onPressed: () {
-                ScaffoldMessenger.of(
-                  context,
-                ).showSnackBar(const SnackBar(content: Text('메뉴 버튼 클릭됨')));
+              onSelected: (value) async {
+                if (value == 'logout') {
+                  final prefs = await SharedPreferences.getInstance();
+                  print('🔑 저장된 토큰: $prefs');
+                  await prefs.remove('accessToken');
+                  await prefs.remove('jwt'); // ✅ JWT도 제거
+                  Navigator.pushNamedAndRemoveUntil(
+                    context,
+                    '/intro',
+                    (route) => false,
+                  );
+                }
               },
+              itemBuilder:
+                  (context) => [
+                    const PopupMenuItem<String>(
+                      value: 'logout',
+                      child: Text('로그아웃'),
+                    ),
+                  ],
             ),
           ],
         ),
@@ -50,7 +66,10 @@ class MainLayout extends StatelessWidget {
       body: child, // ✅ 페이지 내용
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
-        onTap: onTap,
+        onTap: (index) {
+          final routes = ['/author_list_page', '/cart', '/payment'];
+          Navigator.pushNamed(context, routes[index]);
+        },
         selectedItemColor: AppColors.accent,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.list), label: '상품'),
