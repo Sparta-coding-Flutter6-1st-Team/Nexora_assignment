@@ -63,7 +63,6 @@ class _AuthorListPageState extends State<AuthorListPage> {
                 width: 902,
                 height: 82,
                 color: AppColors.SearchBar,
-                padding: const EdgeInsets.all(10),
                 child: TextField(
                   textAlign: TextAlign.center,
                   decoration: InputDecoration(
@@ -93,13 +92,17 @@ class _AuthorListPageState extends State<AuthorListPage> {
             ),
 
             // 배너 이미지
-            Image.asset(
-              'assets/benner.png',
-              width: double.infinity,
-              fit: BoxFit.cover,
+            Container(
+              margin: EdgeInsets.zero,
+              padding: EdgeInsets.zero,
+              child: Image.asset(
+                'assets/benner.png',
+                width: double.infinity,
+                fit: BoxFit.cover,
+              ),
             ),
 
-            // 작가 리스트
+            // 🧑‍🎨 작가 리스트
             Expanded(
               child:
                   _creators.isEmpty
@@ -109,7 +112,6 @@ class _AuthorListPageState extends State<AuthorListPage> {
                         itemBuilder: (context, index) {
                           final creator = _creators[index];
                           final isEven = index % 2 == 0;
-
                           return CreatorBanner(
                             creator: creator,
                             backgroundColor: Color(
