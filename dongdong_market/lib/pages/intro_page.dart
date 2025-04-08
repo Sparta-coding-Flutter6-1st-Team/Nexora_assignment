@@ -1,4 +1,6 @@
+// lib/pages/dongdong_intro_page.dart
 import 'package:flutter/material.dart';
+import '../services/kakao_login_service.dart';
 
 class DongdongIntroPage extends StatelessWidget {
   const DongdongIntroPage({super.key});
@@ -6,13 +8,13 @@ class DongdongIntroPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF9DEB4), // 연노랑 배경
+      backgroundColor: const Color(0xFFF9DEB4),
       body: SafeArea(
         child: Column(
           children: [
             const SizedBox(height: 30),
 
-            // 1. 로고 Row
+            // 로고
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -28,10 +30,9 @@ class DongdongIntroPage extends StatelessWidget {
                 ),
               ],
             ),
-
             const SizedBox(height: 16),
 
-            // 2. 서브 타이틀 박스
+            // 서브타이틀
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               decoration: BoxDecoration(
@@ -50,7 +51,7 @@ class DongdongIntroPage extends StatelessWidget {
 
             const SizedBox(height: 24),
 
-            // 3. 소개글
+            // 소개글
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 24),
               child: Text(
@@ -68,27 +69,24 @@ class DongdongIntroPage extends StatelessWidget {
 
             const SizedBox(height: 24),
 
-            // 4. 이미지 + 버튼을 Column으로
             Expanded(
               child: Column(
                 children: [
                   Expanded(
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: Image.asset(
-                        'assets/mainimages.jpg',
-                        fit: BoxFit.contain, // 이미지 비율 유지
-                      ),
+                      child: Image.asset('assets/main_images.jpg'),
                     ),
                   ),
                   const SizedBox(height: 16),
+
+                  // 바로입장 버튼
                   ElevatedButton(
                     onPressed: () {
-                      // 버튼 누르면 다음 페이지 이동 등 추가 가능
+                      // 나중에 홈 이동 등 추가
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFFF3B95F),
-                      elevation: 4,
                       padding: const EdgeInsets.symmetric(
                         horizontal: 40,
                         vertical: 16,
@@ -106,6 +104,39 @@ class DongdongIntroPage extends StatelessWidget {
                       ),
                     ),
                   ),
+
+                  const SizedBox(height: 12),
+
+                  // 카카오 로그인 버튼
+                  TextButton.icon(
+                    onPressed: () {
+                      KakaoLoginService.login(); // 기능은 따로 분리됨
+                    },
+                    icon: Image.asset(
+                      'assets/kakao_logo.png',
+                      width: 24,
+                      height: 24,
+                    ),
+                    label: const Text(
+                      '카카오로 시작하기',
+                      style: TextStyle(
+                        color: Color(0xFF4B2E0F),
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    style: TextButton.styleFrom(
+                      backgroundColor: const Color(0xFFFEE500),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 32,
+                        vertical: 12,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(24),
+                      ),
+                    ),
+                  ),
+
                   const SizedBox(height: 32),
                 ],
               ),

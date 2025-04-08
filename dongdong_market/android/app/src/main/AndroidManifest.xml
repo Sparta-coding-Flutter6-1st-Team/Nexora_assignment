@@ -30,6 +30,13 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+        <!-- 인터넷 권한 -->
+        <uses-permission android:name="android.permission.INTERNET"/>
+        
+        <!-- Kakao SDK 필요한 설정 -->
+        <meta-data
+            android:name="com.kakao.sdk.AppKey"
+            android:value="cc36c9a63b47fd7724a5f01e03cf3d72" />
     </application>
     <!-- Required to query activities that can process text, see:
          https://developer.android.com/training/package-visibility and

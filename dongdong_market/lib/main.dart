@@ -5,8 +5,10 @@ import 'pages/payment_info_page.dart';
 import 'pages/product_list_page.dart';
 import 'pages/intro_page.dart';
 import 'pages/category_screen.dart';
+import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
 
 void main() {
+  KakaoSdk.init(nativeAppKey: 'cc36c9a63b47fd7724a5f01e03cf3d72');
   runApp(const MyApp());
 }
 
