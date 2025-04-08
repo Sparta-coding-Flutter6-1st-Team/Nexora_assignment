@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../models/product.dart'; // 추가된 상수 파일 import
+import 'package:dongdong_market/models/product.dart';
 
 class MainLayout extends StatelessWidget {
   final Widget child;
@@ -11,13 +11,13 @@ class MainLayout extends StatelessWidget {
     required this.child,
     required this.currentIndex,
     required this.onTap,
-  });
-
+  }); 
+ 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: kAppBarBackgroundColor,
+        backgroundColor: AppColors.AppBarBackground,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -44,7 +44,7 @@ class MainLayout extends StatelessWidget {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
         onTap: onTap,
-        selectedItemColor: kSelectedNavColor,
+        selectedItemColor: AppColors.accent,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.list), label: '상품'),
           BottomNavigationBarItem(
